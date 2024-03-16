@@ -25,8 +25,6 @@ class User {
 
 const user1 = new User('Alice', '+71234567890');
 console.log(user1.tel);
-user1.tel = '+71234567890'
-console.log(user1.tel);
 user1.tel = '12345'
 console.log(user1.tel);
 user1.hello();

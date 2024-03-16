@@ -23,7 +23,7 @@ class User {
     }
     
     set age(newAge) {
-        if (isNaN(age) === false && newAge >= 1 && newAge <= 100 && Number.isInteger(age) === true) {
+        if (isNaN(newAge) === false && newAge >= 1 && newAge <= 100 && Number.isInteger(newAge) === true) {
             this.#age = newAge;
         } else {
             console.log("Возраст должен быть целым числом от 1 до 100.");
@@ -59,8 +59,8 @@ class Student extends User {
 
 let student1 = new Student('Bob');
 console.log(student1)
-student.tel = '+71234567890'
-student.age = 20
-student.learn()
-student.hello()
+student1.tel = '+71234567890'
+student1.age = 20
+student1.learn()
+student1.hello()
 console.log(student1)

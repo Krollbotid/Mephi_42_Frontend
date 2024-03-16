@@ -8,8 +8,10 @@ function User(name, age) {
 }
 
 
-
+function Student(name, age) {
+    User.call(this, name, age)
+}
+Student.prototype = Object.create(User.prototype)
 let user1 = new User('Alice', 25);
 user1.hello();
-console.log(user1)
   

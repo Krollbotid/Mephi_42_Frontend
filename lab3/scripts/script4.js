@@ -1,5 +1,5 @@
 class User {
-    #age = 0
+    #age;
     constructor(name) {
         this.name = name;
         this._tel = null;
@@ -23,7 +23,7 @@ class User {
     }
     
     set age(newAge) {
-        if (isNaN(newAge) === false && newAge >= 1 && newAge <= 100 && Number.isInteger(newAge) === true) {
+        if (isNaN(age) === false && newAge >= 1 && newAge <= 100 && Number.isInteger(age) === true) {
             this.#age = newAge;
         } else {
             console.log("Возраст должен быть целым числом от 1 до 100.");

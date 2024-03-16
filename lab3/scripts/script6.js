@@ -4,7 +4,7 @@ Array.prototype.reverse = function() {
 };
 
 
-let arr = [1, 2, 3, 4, 5];
-let result = arr.reverse();
+var arr = [1, 2, 3, 4, 5];
+var result = arr.reverse();
 
 console.log(result);

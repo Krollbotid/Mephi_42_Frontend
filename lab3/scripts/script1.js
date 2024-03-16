@@ -1,15 +1,14 @@
-function User(name, age) {
-    this.name = name;
-    this.age = age;
-  
-    this.hello = function() {
+class User {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    hello() {
         console.log(`Hi! My name is ${this.name}. And I am ${this.age} years old.`);
     }
 }
-
-
-
+  
 let user1 = new User('Alice', 25);
 user1.hello();
-console.log(user1)
   

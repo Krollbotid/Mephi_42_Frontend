@@ -1,5 +1,5 @@
 class User {
-    #age = 0
+    #age;
     constructor(name) {
         this.name = name;
         this._tel = null;
@@ -23,7 +23,7 @@ class User {
     }
     
     set age(newAge) {
-        if (isNaN(newAge) === false && newAge >= 1 && newAge <= 100 && Number.isInteger(newAge) === true) {
+        if (isNaN(age) === false && newAge >= 1 && newAge <= 100 && Number.isInteger(age) === true) {
             this.#age = newAge;
         } else {
             console.log("Возраст должен быть целым числом от 1 до 100.");
@@ -36,10 +36,31 @@ class User {
 
 }
 
-let user1 = new User('Alice');
-console.log(user1.age);
-user1.age = 30;
-console.log(user1.age);
-user1.age = 150;
-user1.hello();
-  
+class Student extends User {
+    #knowledge = 0;
+    constructor(name) {
+        super(name);
+    }
+
+    learn() {
+        this.#knowledge++;
+    }
+
+    get knowledge() {
+        return this.#knowledge;
+    }
+
+    hello() {
+        console.log(`Hi! My name is ${this.name}. I am ${this.age} years old. And I am a student!`);
+    }
+
+}
+
+
+let student1 = new Student('Bob');
+console.log(student1)
+student.tel = '+71234567890'
+student.age = 20
+student.learn()
+student.hello()
+console.log(student1)
