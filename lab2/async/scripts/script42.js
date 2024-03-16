@@ -24,44 +24,39 @@ function loadImage(url) {
 }
 
 function loadMyImages(urls) {
-    return Promise.race(urls.map(loadImage))
+    return Promise.race(urls.map((url) => {return loadImage(url)}))
 }
 
-function processRaceRes(res, urls) {
-    console.log(res)
-    let img = res[0];
-    let url = res[1];
-    console.log(url)
-    if (img === null) {
-        console.log("cannot load image");
-        element = document.createElement("p")
-        element.textContent = "Can't load image"
-        document.body.appendChild(element);
-    } else {
-        img.style.width = '600px'
-        document.body.appendChild(img);
+function addElementToBody(element) {
+    document.body.appendChild(element);
+}
+
+async function loadWithoutOrder(urls) {
+    urls = urls.slice()
+    let imgs = []
+    let n = urls.length
+    for (let i = 0; i < n; i++) {
+        console.log("iter: " + i)
+        console.log(urls)
+        let res = await loadMyImages(urls);
+
+        let img = res[0];
+        let url = res[1];
+        if (img === null) {
+            console.log("cannot load image");
+            element = document.createElement("p")
+            element.textContent = "Can't load image"
+            document.body.appendChild(element);
+        } else {
+            img.style.width = '600px'
+            document.body.appendChild(img);            
+            imgs.push(img)
+        }
+        console.log(url);
+        let ind = urls.indexOf(url);
+        urls.splice(ind, 1);
     }
-    let ind = urls.indexOf(url);
-    urls.splice(ind, 1);
-    return urls
-}
-
-function loadWithoutOrder(urls) {
-    return Promise.race(urls.map(loadImage)).then(function(res){
-        urls = processRaceRes(res, urls)
-        return Promise.race(urls.map(loadImage))
-    }).then(function(res){
-        urls = processRaceRes(res, urls)
-        return Promise.race(urls.map(loadImage))
-    }).then(function(res){
-        urls = processRaceRes(res, urls)
-        return Promise.race(urls.map(loadImage))
-    }).then(function(res){
-        urls = processRaceRes(res, urls)
-        return Promise.race(urls.map(loadImage))
-    }).then(function(res){
-        urls = processRaceRes(res, urls)
-    })
+    return imgs
 }
 
 loadWithoutOrder(imageUrls).then(function(res) {

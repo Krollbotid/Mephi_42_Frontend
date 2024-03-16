@@ -1,51 +1,52 @@
 class User {
     #age;
-    constructor(name, age, tel) {
+    constructor(name) {
         this.name = name;
-        this._tel = tel; // защищенное поле
+        this._tel = null;
     }
 
-    getTel = function() {
+    get tel() {
         return this._tel;
-    };
+    }
 
-    setTel = function(newTel) {
-        const telRegex = /^\+7\d{10}$/; // регулярное выражение для проверки формата телефона
-        if (telRegex.test(newTel)) {
-            _tel = newTel;
+    set tel(value) {
+        if (/^\+7\d{10}$/.test(value)) {
+            this._tel = value;
         } else {
-            console.log("Некорректный формат телефона. Используйте формат +7xxxxxxxxxx");
+            console.log("Некорректный формат телефона. Телефон должен быть в формате +7xxxxxxxxxx");
+            throw Error("wrong format")
         }
-    };
+    }
 
-    getAge = function() {
-        return this.#age;
-    };
+    get age() {
+        return this.#age
+    }
     
-    setAge = function(newAge) {
-        if (Number.isInteger(newAge) && newAge >= 1 && newAge <= 100) {
+    set age(newAge) {
+        if (isNaN(age) === false && newAge >= 1 && newAge <= 100 && Number.isInteger(age) === true) {
             this.#age = newAge;
         } else {
             console.log("Возраст должен быть целым числом от 1 до 100.");
         }
     };
 
-    hello () {
-        console.log(`Hi! My name is ${this.name}. And I am  years old. My phone number is ${this._tel}`);
+    hello() {
+        console.log(`Hi! My name is ${this.name}. And I am ${this.#age} years old. My phone number is ${this._tel}`);
     };
+
 }
 
 class Student extends User {
     #knowledge = 0;
-    constructor(name, age, tel) {
-        super(name, age, tel);
+    constructor(name) {
+        super(name);
     }
 
     learn() {
         this.#knowledge++;
     }
 
-    getKnowledge = function() {
+    get knowledge() {
         return this.#knowledge;
     }
 
@@ -56,6 +57,10 @@ class Student extends User {
 }
 
 
-const student1 = new Student('Bob', 20, '+71234567890');
+let student1 = new Student('Bob');
 console.log(student1)
-student1.__proto__.__proto__.hello()
+student.tel = '+71234567890'
+student.age = 20
+student.learn()
+student.hello()
+console.log(student1)

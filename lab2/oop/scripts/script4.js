@@ -1,45 +1,45 @@
 class User {
     #age;
-    constructor(name, age, tel) {
+    constructor(name) {
         this.name = name;
-        this._tel = tel; // защищенное поле
+        this._tel = null;
     }
 
-    getTel = function() {
+    get tel() {
         return this._tel;
-    };
+    }
 
-    setTel = function(newTel) {
-        const telRegex = /^\+7\d{10}$/; // регулярное выражение для проверки формата телефона
-        if (telRegex.test(newTel)) {
-            _tel = newTel;
+    set tel(value) {
+        if (/^\+7\d{10}$/.test(value)) {
+            this._tel = value;
         } else {
-            console.log("Некорректный формат телефона. Используйте формат +7xxxxxxxxxx");
+            console.log("Некорректный формат телефона. Телефон должен быть в формате +7xxxxxxxxxx");
+            throw Error("wrong format")
         }
-    };
+    }
 
-    getAge = function() {
-        return this.#age;
-    };
+    get age() {
+        return this.#age
+    }
     
-    setAge = function(newAge) {
-        if (Number.isInteger(newAge) && newAge >= 1 && newAge <= 100) {
+    set age(newAge) {
+        if (isNaN(age) === false && newAge >= 1 && newAge <= 100 && Number.isInteger(age) === true) {
             this.#age = newAge;
         } else {
             console.log("Возраст должен быть целым числом от 1 до 100.");
         }
     };
 
-    hello = function() {
+    hello() {
         console.log(`Hi! My name is ${this.name}. And I am ${this.#age} years old. My phone number is ${this._tel}`);
     };
 
 }
 
-const user1 = new User('Alice', 25, '+71234567890');
-console.log(user1.getAge());
-user1.setAge(30);
-console.log(user1.getAge());
-user1.setAge(150);
+let user1 = new User('Alice');
+console.log(user1.age);
+user1.age = 30;
+console.log(user1.age);
+user1.age = 150;
 user1.hello();
   

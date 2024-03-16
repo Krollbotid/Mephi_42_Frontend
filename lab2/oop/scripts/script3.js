@@ -1,30 +1,31 @@
 class User {
-    constructor(name, age, tel) {
+    constructor(name, age) {
         this.name = name;
         this.age = age;
-        this._tel = tel; // защищенное поле
+        this._tel = null;
     }
-    
-    getTel = function() {
+
+    get tel() {
         return this._tel;
-    };
+    }
 
-    setTel = function(newTel) {
-        const telRegex = /^\+7\d{10}$/; // регулярное выражение для проверки формата телефона
-        if (telRegex.test(newTel)) {
-            _tel = newTel;
+    set tel(value) {
+        if (/^\+7\d{10}$/.test(value)) {
+            this._tel = value;
         } else {
-            console.log("Некорректный формат телефона. Используйте формат +7xxxxxxxxxx");
+            console.log("Некорректный формат телефона. Телефон должен быть в формате +7xxxxxxxxxx");
+            throw Error("wrong format")
         }
-    };
+    }
 
-    hello = function() {
+    hello() {
         console.log(`Hi! My name is ${this.name}. And I am ${this.age} years old. My phone number is ${this._tel}`);
     };
 }
 
-const user1 = new User('Alice', 25, '+71234567890');
-console.log(user1.getTel());
-user1.setTel('12345');
+const user1 = new User('Alice', '+71234567890');
+console.log(user1.tel);
+user1.tel = '12345'
+console.log(user1.tel);
 user1.hello();
   
