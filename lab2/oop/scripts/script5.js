@@ -43,6 +43,7 @@ class Student extends User {
     }
 
     learn() {
+        console.log(this.age)
         this.#knowledge++;
     }
 

@@ -23,7 +23,7 @@ loadMyImages(imageUrls).then(function(imgs) {
     for (let res of imgs) {
         let status = res['status']
         let img = res['value']
-        element = null
+        let element = null
         if (status === "fulfilled") {
             element = img
             element.style.width = '600px';

@@ -12,4 +12,9 @@ function User(name, age) {
 let user1 = new User('Alice', 25);
 user1.hello();
 console.log(user1)
-  
+
+User.prototype = {
+    hello() {
+        
+    }
+}
