@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            background-color: #00FFFF;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        td {
+            padding: 5px;
+            border: 1px solid black;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .strong {
+            font-weight: bold;
+        }
+
+        .colored-text span:nth-child(odd) {
+            color: blue;
+        }
+
+        .colored-text span:nth-child(even) {
+            color: red;
+        }
+
+        .comic {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        Добро пожаловать!
+    </h1>
+    <p class="colored-text"><span class="italic">П</span><span class="italic">р</span><span class="italic">и</span><span
+            class="italic">в</span><span class="italic">е</span><span class="italic">т</span><span
+            class="italic">с</span><span class="italic">т</span><span class="italic">в</span><span
+            class="italic">у</span><span class="italic">е</span><span class="italic">м</span> <span
+            class="u">в</span><span class="u">а</span><span class="u">с</span> <span class="strong">в</span> <span
+            class="strong">н</span><span class="strong">а</span><span class="strong">ш</span><span
+            class="strong">е</span><span class="strong">м</span>
+        <a href="http://example.com">магазине</a>!
+    </p>
+    <p> &lt;h1&gt;<span class="comic">Теорема Пифагора</span>&lt;/h1&gt;: c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup>
+    </p>
+    <table>
+        <tr>
+            <td colspan="2">Информация</td>
+        </tr>
+        <tr>
+            <td>Старая цена: <del>1000</del> &#8381;</td>
+            <td>Новая цена: 500 &#8381;</td>
+        </tr>
+    </table>
+</body>
+
+</html>
+
+<!-- &nbsp; - пробел, &lt; - левая скобка, &gt; - правая скобка, &#8381; - рубль-->

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .deviceType {
+            display: none;
+        }
+        @media (min-width: 1025px) {
+            .desktop {
+                display: block;
+            }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .tablet {
+                display: block;
+            }
+        }
+        @media (max-width: 768px) {
+            .mobile {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="deviceType desktop">Desktop</div>
+    <div class="deviceType tablet">Tablet</div>
+    <div class="deviceType mobile">Mobile</div>
+</body>
+</html>
+

@@ -26,12 +26,12 @@ let increment = function() {
     localStorage.setItem('counter', counter);
     document.getElementById('counter').innerText = counter + ' clicks';
 }
-
 let reset = function() {
     localStorage.setItem('counter', 0);
     counter = 0
     localStorage.setItem('start', null);
 }
+
 
 let button = document.getElementById('clicker')
 button.onclick = increment
