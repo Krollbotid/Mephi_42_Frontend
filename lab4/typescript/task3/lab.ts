@@ -2,7 +2,7 @@ type UserType = {
     name: string;
     age: number;
     hello(): void;
-};
+}
 
 class User implements UserType {
     name: string;
